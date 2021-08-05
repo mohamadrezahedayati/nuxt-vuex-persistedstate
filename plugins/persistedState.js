@@ -1,9 +1,13 @@
-// ~/plugins/persistedState.client.js
+import createPersistedState from "vuex-persistedstate";
+import SecureLS from "secure-ls";
+const ls = new SecureLS({ isCompression: false });
 
-import createPersistedState from 'vuex-persistedstate'
-
-export default ({store}) => {
+export default ({ store, isHMR }) => {
   createPersistedState({
-    key: 'yourkey',
+    storage: {
+      getItem: (key) => ls.get(key),
+      setItem: (key, value) => ls.set(key, value),
+      removeItem: (key) => ls.remove(key)
+    }
   })(store)
-}
+};
