@@ -1,15 +1,25 @@
-import { Store } from 'vuex';
+import Vue from 'vue'
 
-const store = () => new Store({
-  state: {
-    text: 'sss'
+export const state = () => ({
+  counter: 0
+})
+
+export const mutations = {
+  increment(state) {
+    state.counter++;
   },
-  mutations: {
-    myTypeText(state, text) {
-      state.text = text;
-    },
-  },
-});
+  decrement(state) {
+    state.counter--;
+  }
+}
 
+export const actions = {
 
-export default store;
+}
+
+export default ({
+  namespaced: true,
+  state,
+  mutations,
+  actions
+})

@@ -26,7 +26,7 @@ export default {
       return this.$store.state.counter;
     },
     myText() {
-console.log(this.$store);
+console.log(this.$store.state);
       return this.$store.state;
     },
   },
