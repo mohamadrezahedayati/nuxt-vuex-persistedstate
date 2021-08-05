@@ -1,8 +1,8 @@
 import createPersistedState from "vuex-persistedstate";
 import SecureLS from "secure-ls";
-const ls = new SecureLS({ isCompression: false });
+const ls = new SecureLS({ encodingType: 'des', isCompression: false, encryptionSecret: 'axon' });
 
-export default ({ store, isHMR }) => {
+export default ({ store }) => {
   createPersistedState({
     storage: {
       getItem: (key) => ls.get(key),
